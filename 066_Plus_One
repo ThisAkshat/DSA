@@ -39,7 +39,6 @@ Explanation: 4321 + 1 = 4322
 - **Space complexity:** O(1) - except jab new array banana padta hai
 
 ## Code
-```java
 class Solution {
     public int[] plusOne(int[] digits) {
         int n = digits.length;
