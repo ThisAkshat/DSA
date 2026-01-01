@@ -1,0 +1,61 @@
+# 66. Plus One
+
+## Problem Statement
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+Increment the large integer by one and return the resulting array of digits.
+
+## Examples
+**Example 1:**
+Input: digits = [1,2,3]
+Output: [1,2,4]
+Explanation: 123 + 1 = 124
+
+
+**Example 2:**
+Input: digits = [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: 4321 + 1 = 4322
+
+
+## Intuition
+- Problem ek array of digits hai jo ek large number represent karta hai
+- Hume last digit mein +1 karna hai
+- Agar last digit 9 hai toh carry forward karna hai
+- Agar sab digits 9 hai (e.g., [9,9,9]) toh array ka size badhana hoga
+
+## Approach
+1. Last digit se start karo (least significant digit)
+2. Check karo agar digit < 9 hai:
+   - Agar haan, digit++ karo aur return karo
+3. Agar digit == 9 hai:
+   - Use 0 set karo aur carry forward karo
+4. Agar sab digits process ho gaye aur carry bacha hai:
+   - New array banao with size+1
+   - First element 1 set karo (e.g., [9] → [1,0])
+
+## Complexity
+- **Time complexity:** O(n) - worst case mein pure array traverse karna
+- **Space complexity:** O(1) - except jab new array banana padta hai
+
+## Code
+```java
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int n = digits.length;
+        int i = n-1;
+        
+        while(i >= 0){
+            if(digits[i] < 9){
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+            i--;
+        }
+        
+        int[] result = new int[n+1];
+        result[0] = 1;
+        return result;
+    }
+}
