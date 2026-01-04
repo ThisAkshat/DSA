@@ -1,4 +1,4 @@
-class Solution {
+ class Solution {
     public int sumFourDivisors(int[] nums) {
         int totalSum =0;
         for(int num : nums){
