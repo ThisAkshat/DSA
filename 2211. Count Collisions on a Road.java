@@ -1,4 +1,4 @@
-/*
+ /*
 Intuition
 Cars moving Left ('L') from leftmost end will never collide (exit road).
 Cars moving Right ('R') from rightmost end will never collide (exit road).
