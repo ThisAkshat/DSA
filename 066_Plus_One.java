@@ -1,4 +1,4 @@
-/* 
+ /* 
 # 66. Plus One
 
 ## Problem Statement
