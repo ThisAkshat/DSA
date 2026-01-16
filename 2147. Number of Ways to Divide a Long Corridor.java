@@ -58,3 +58,87 @@ class Solution {
         return(int) result;
     }
 }
+/*
+Example: corridor = "SSPPSPS"
+Indices: 0 1 2 3 4 5 6
+Chars: S S P P S P S
+
+Line 1-4: Initialization
+
+class Solution {
+    int mod = 1000000007;
+    public int numberOfWays(String corridor) {
+        ArrayList<Integer> possSeats = new ArrayList<>();
+        
+Execution:
+* mod = 1000000007
+* corridor = "SSPPSPS"
+* possSeats = [] (empty ArrayList)
+
+Line 5-9: Collect Seat Positions
+
+for(int i = 0; i < corridor.length(); i++) {  // i=0 to 6
+    if(corridor.charAt(i) == 'S') {
+        possSeats.add(i);
+    }
+}
+
+Loop Execution:
+i=0: char='S' → add(0) → [0]
+i=1: char='S' → add(1) → [0,1]
+i=2: char='P' → skip
+i=3: char='P' → skip
+i=4: char='S' → add(4) → [0,1,4]
+i=5: char='P' → skip
+i=6: char='S' → add(6) → [0,1,4,6]
+After loop: possSeats = [0, 1, 4, 6]
+
+
+Line 10-13: Validity Check
+
+if(possSeats.size() % 2 != 0 || possSeats.size() == 0) {
+    return 0;
+}
+Check:
+* possSeats.size() = 4
+* 4 % 2 = 0 → not odd ✓
+* 4 == 0? false ✓
+* Condition false → continue
+
+Line 14-16: Initialization for Calculation
+
+long result = 1;
+int prev = possSeats.get(1);
+
+Execution:
+* result = 1
+* prev = possSeats.get(1) = 1
+
+Line 17-23: Main Calculation Loop
+
+for(int i = 2; i < possSeats.size(); i += 2) {
+
+Iteration 1: i = 2
+// i=2 (less than 4 → continue)
+int length = possSeats.get(i) - prev;
+// length = possSeats.get(2) - prev = 4 - 1 = 3
+
+result = (result * length) % mod;
+// result = (1 × 3) % mod = 3
+
+prev = possSeats.get(i + 1);
+// prev = possSeats.get(3) = 6
+State after iteration 1:
+
+result = 3
+prev = 6
+i = 2 + 2 = 4
+
+Loop Condition Check:
+for(int i = 2; i < possSeats.size(); i += 2) {
+// i=4, possSeats.size()=4 → 4 < 4? false → exit loop
+Line 24: Return Result
+
+return (int) result;  // return (int)3 = 3
+Final Output: 3 ✓
+*/
