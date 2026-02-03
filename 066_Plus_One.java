@@ -11,7 +11,6 @@ Input: digits = [1,2,3]
 Output: [1,2,4]
 Explanation: 123 + 1 = 124
 
-
 **Example 2:**
 Input: digits = [4,3,2,1]
 Output: [4,3,2,2]
