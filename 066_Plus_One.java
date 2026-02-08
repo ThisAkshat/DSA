@@ -33,6 +33,7 @@ Explanation: 4321 + 1 = 4322
    - New array banao with size+1
    - First element 1 set karo (e.g., [9] → [1,0])
 
+
 ## Complexity
 - **Time complexity:** O(n) - worst case mein pure array traverse karna
 - **Space complexity:** O(1) - except jab new array banana padta hai
