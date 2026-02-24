@@ -38,19 +38,15 @@ class Solution {
 
 
 /*
-Problem kya keh rahi hai:
-
+Problem :-
 Tumhe ek binary string s diya gaya hai, jo sirf '0' aur '1' se bana hai.
-
 Tumhe us string ke sabhi possible substrings consider karne hain.
-
 Substring ka matlab:
 Continuous characters ka part.
 Jaise agar s = "101" hai, to substrings ho sakte hain:
 "1", "0", "1", "10", "01", "101"
 
 Ab condition kya hai:
-
 Ek substring tab valid hai (dominant ones) jab:
 
 number of ones >= (number of zeros)^2
@@ -91,7 +87,129 @@ jahan ones >= (zeros)^2
 
 Bas unki total count return karni hai.
 
+*************************************************************************************************8
 
+Example 1:
+
+Input: s = "00011"
+
+Output: 5
+
+Explanation:
+
+The substrings with dominant ones are shown in the table below.
+
+i	j	s[i..j]	Number of Zeros  	Number of Ones
+3	3	1	         0	                       1
+4	4	1	         0	                       1
+2	3	01	         1                          1
+3	4	11	         0                     	   2
+2	4	011	         1	                        2
+
+*************************************************************************************************8
+
+Dry run for example:
+
+s = "00011"
+n = 5
+
+We check all possible substrings and count those where:
+
+number of ones >= (number of zeros)^2
+
+---
+
+Start from index 0
+
+Substring: "0"
+zeros = 1, ones = 0
+1^2 = 1
+0 >= 1 → false
+
+Substring: "00"
+zeros = 2, ones = 0
+2^2 = 4
+0 >= 4 → false
+
+Substring: "000"
+zeros = 3, ones = 0
+3^2 = 9
+0 >= 9 → false
+
+Substring: "0001"
+zeros = 3, ones = 1
+3^2 = 9
+1 >= 9 → false
+
+Substring: "00011"
+zeros = 3, ones = 2
+3^2 = 9
+2 >= 9 → false
+
+---
+
+Start from index 1
+
+Substring: "0"
+zeros = 1, ones = 0
+1 >= 1 → false
+
+Substring: "00"
+zeros = 2, ones = 0
+0 >= 4 → false
+
+Substring: "001"
+zeros = 2, ones = 1
+1 >= 4 → false
+
+Substring: "0011"
+zeros = 2, ones = 2
+2 >= 4 → false
+
+---
+
+Start from index 2
+
+Substring: "0"
+zeros = 1, ones = 0
+0 >= 1 → false
+
+Substring: "01"
+zeros = 1, ones = 1
+1 >= 1 → true
+count = 1
+
+Substring: "011"
+zeros = 1, ones = 2
+2 >= 1 → true
+count = 2
+
+---
+
+Start from index 3
+
+Substring: "1"
+zeros = 0, ones = 1
+1 >= 0 → true
+count = 3
+
+Substring: "11"
+zeros = 0, ones = 2
+2 >= 0 → true
+count = 4
+
+---
+
+Start from index 4
+
+Substring: "1"
+zeros = 0, ones = 1
+1 >= 0 → true
+count = 5
+
+---
+
+Final count = 5
 
 
 */
